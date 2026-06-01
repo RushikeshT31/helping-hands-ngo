@@ -129,12 +129,12 @@ def login():
 @app.route("/dashboard")
 def dashboard():
 
-    if "name" not in session:
+    if "admin" not in session:
         return redirect("/login")
 
     return render_template(
         "dash.html",
-        name=session["name"]
+        name=session["admin"]
     )
 
 # Delete Slider

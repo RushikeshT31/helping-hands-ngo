@@ -37,10 +37,10 @@ def index():
     cur = conn.cursor()
 
     try:
-    cur.execute("SELECT * FROM slider")
-    sliders = cur.fetchall()
-except:
-    sliders = []
+        cur.execute("SELECT * FROM slider")
+        sliders = cur.fetchall()
+    except:
+        sliders = []
 
     conn.close()
 

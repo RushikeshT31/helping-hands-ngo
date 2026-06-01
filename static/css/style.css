@@ -719,40 +719,34 @@ footer{
 }
 /* ================= ABOUT SECTION ================= */
 
+/* ABOUT SECTION */
+
 .about-section{
-
-    max-width:100px;
-
+    max-width:1100px;
     margin:50px auto;
-
     padding:50px;
-
-    background:linear-gradient(
-        135deg,
-        #ff4d4d,
-        #cc0000
-    );
-
+    background:linear-gradient(135deg,#ff4d4d,#cc0000);
     color:white;
-
     border-radius:20px;
-
     box-shadow:0px 10px 25px rgba(0,0,0,0.25);
-
     animation:fadeIn 1.5s ease;
+    overflow:hidden;
 }
 
 /* ABOUT IMAGE */
 
 .about-banner{
-
     display:block;
-
     margin:0 auto 30px auto;
 
-    width:100px;
+    width:100%;
+    max-width:450px;
 
     height:auto;
+
+    border-radius:15px;
+
+    box-shadow:0px 5px 15px rgba(0,0,0,0.3);
 
     animation:float 3s ease-in-out infinite;
 }
@@ -760,44 +754,32 @@ footer{
 /* HEADING */
 
 .about-section h1{
-
     text-align:center;
-
     color:white;
-
     font-size:50px;
-
     margin-bottom:25px;
-
     text-shadow:2px 2px 8px rgba(0,0,0,0.3);
 }
 
 /* PARAGRAPHS */
 
 .about-section p{
-
     color:white;
-
     font-size:22px;
-
     line-height:1.8;
-
     text-align:center;
 }
 
 /* HOVER EFFECT */
 
 .about-section:hover{
-
     transform:translateY(-5px);
-
     transition:0.5s;
 }
 
 /* FLOAT ANIMATION */
 
 @keyframes float{
-
     0%{
         transform:translateY(0);
     }
@@ -814,7 +796,6 @@ footer{
 /* FADE ANIMATION */
 
 @keyframes fadeIn{
-
     from{
         opacity:0;
         transform:translateY(30px);
@@ -823,6 +804,28 @@ footer{
     to{
         opacity:1;
         transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .about-section{
+        padding:25px;
+        margin:20px;
+    }
+
+    .about-section h1{
+        font-size:35px;
+    }
+
+    .about-section p{
+        font-size:18px;
+    }
+
+    .about-banner{
+        max-width:300px;
     }
 }
 

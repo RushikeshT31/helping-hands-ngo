@@ -16,23 +16,24 @@ def connect_db():
     return sqlite3.connect("slider.db")
 
 # Create Users Table
-def create_table():
+def connect_db():
+    return sqlite3.connect("slider.db")
 
-    conn = connect_db()
-    cur = conn.cursor()
+# Create Table
+conn = connect_db()
+cur = conn.cursor()
 
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS users(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT NOT NULL,
-            email TEXT NOT NULL UNIQUE,
-            password TEXT NOT NULL
-        )
-    """)
+cur.execute("""
+CREATE TABLE IF NOT EXISTS users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT,
+    email TEXT UNIQUE,
+    password TEXT
+)
+""")
 
-    conn.commit()
-    conn.close()
-
+conn.commit()
+conn.close()
 create_table()
 # Home Page
 @app.route("/")

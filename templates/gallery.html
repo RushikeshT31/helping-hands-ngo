@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery - Helping Hands NGO</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h1>Helping Hands NGO</h1>
+
+    <ul>
+        <li><a href="/">🏠 Home</a></li>
+        <li><a href="/gallery">📸 Gallery</a></li>
+    </ul>
+</nav>
+
+<div class="section">
+
+    <h2>Our Gallery</h2>
+
+    <div class="gallery">
+
+        <img src="{{ url_for('static', filename='images/en.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/lo.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/water.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/women.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/health.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/support.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/blood.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/community.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/food.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/di.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/animal.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/edu1.jpeg') }}">
+
+    </div>
+
+</div>
+
+<div class="back-container">
+
+    <a href="/" class="back-home-btn">
+        🏠 Back To Home
+    </a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <style>
+
+        body{
+            font-family:Arial,sans-serif;
+            background:#e6f7ff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+        }
+
+        .box{
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.2);
+            text-align:center;
+            width:600px;
+        }
+
+        h1{
+            color:#1877f2;
+            font-size:45px;
+        }
+
+        .success{
+            color:green;
+            font-size:28px;
+            margin:20px 0;
+            font-weight:bold;
+        }
+
+        p{
+            font-size:24px;
+        }
+
+        .logout-btn{
+            display:inline-block;
+            margin-top:25px;
+            padding:15px 35px;
+            background:#ff4d4d;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .logout-btn:hover{
+            background:#e60000;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>🎉 Welcome {{ name }}</h1>
+
+    <div class="success">
+        ✅ Login Successful
+    </div>
+
+    <p>
+        Welcome to your Home NGO.
+    </p>
+
+    <a href="/logout" class="logout-btn">
+        🚪 Logout
+    </a>
+
+</div>
+
+</body>
+</html>

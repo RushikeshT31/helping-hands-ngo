@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> NGO Home Page</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+   <h1 class="ngo-title">
+    Helping Hands NGO
+</h1>
+<div class="logo-line"></div>
+
+    <ul>
+
+       <li><a href="/">🏠 Home</a></li>
+
+<li><a href="/about">👥 About Us</a></li>
+<li><a href="#programs">🎯 Our Programs</a></li>
+<li><a href="/gallery">📸 Gallery</a></li>
+<li><a href="/login">🔐 Admin</a></li>
+<li><a href="/donate">💝 Donate</a></li>
+<li><a href="#contact">📞 Contact Us</a></li>
+<li><a href="#location">📍 Location</a></li>
+<li><a href="#social-connect">📊 Connect now</a></li>
+    </ul>
+
+</nav>
+<!-- BANNER -->
+
+<div class="banner">
+
+    <img src="{{ url_for('static', filename='images/ngo.jpeg') }}" alt="NGO Banner">
+
+</div>
+
+
+<!-- VISION AND MISSION -->
+
+<div class="section">
+
+    <h2>Vision and Mission</h2>
+
+    <div class="vision-container">
+
+        <div class="box">
+
+            <h3>Our Mission</h3>
+
+            <p>
+                Our mission is to provide quality education,
+                healthcare and support services to poor
+                children and families.
+            </p>
+
+        </div>
+
+        <div class="box">
+
+            <h3>Our Vision</h3>
+
+            <p>
+                Our vision is to create a better society
+                where every child has equal opportunities
+                and proper education.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="stats-wrapper">
+
+    <div class="stats">
+
+        <!-- Your stat-boxes here -->
+
+    </div>
+
+</div>
+<div class="section">
+
+    <h2>Gallery</h2>
+
+    <div class="gallery">
+
+        <img src="{{ url_for('static', filename='images/en.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/lo.jpeg') }}">
+        <img src="{{ url_for('static', filename='images/water.jpeg') }}">
+
+
+    </div>
+
+</div>
+<!-- As -->
+
+
+<div class="section">
+
+    <h2>Success Stories</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-content">
+
+                <h3>Sara's Education Journey</h3>
+
+                <p>
+                    Through our scholarship program, Riya completed
+                    her education and is now pursuing engineering.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+
+                <h3>Rahul's Digital Success</h3>
+
+                <p>
+                    Rahul gained computer and digital literacy skills
+                    through our training program and secured a job in
+                    the IT sector.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+
+                <h3>Seema Empowerment Story</h3>
+
+                <p>
+                    Seema received vocational training and financial
+                    support, enabling her to start a small business
+                    and become financially independent.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+
+                <h3>Village Water Project</h3>
+
+                <p>
+                    Our clean water initiative provided safe drinking
+                    water to over 500 families, improving health and
+                    sanitation in rural communities.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+
+                <h3>Healthcare for All</h3>
+
+                <p>
+                    Free medical camps helped hundreds of families
+                    receive essential healthcare services and health
+                    awareness support.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+
+                <h3>Green Future Initiative</h3>
+
+                <p>
+                    Through our environmental campaign, thousands of
+                    trees were planted, creating greener and healthier
+                    communities.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<br>
+<!-- STATISTICS -->
+
+<div class="section">
+<br>
+<br>
+    <h2>Our Statistics</h2>
+
+    <div class="stats">
+
+        <div class="stat-box">
+            <h1 class="counter" data-target="3067">800</h1>
+            <p>Campaign Hosted</p>
+        </div>
+
+        <div class="stat-box">
+            <h1>10000+</h1>
+            <p>Students Educated</p>
+        </div>
+<div class="stat-box">
+    <h1>150+</h1>
+    <p>Villages Supported</p>
+</div>
+<div class="stat-box">
+    <h1>500+</h1>
+    <p>Medical Camps Organized</p>
+</div>
+
+<div class="stat-box">
+    <h1>25000+</h1>
+    <p>Trees Planted</p>
+
+</div><div class="stat-box">
+    <h1>8000+</h1>
+    <p>Women Empowered</p>
+</div>
+
+<div class="stat-box">
+    <h1>1200+</h1>
+    <p>Scholarships Provided</p>
+</div>
+        <div class="stat-box">
+            <h1>50000+</h1>
+            <p>Patients Treated</p>
+        </div>
+<div class="stat-box">
+    <h1>7500+</h1>
+    <p>Families Supported</p>
+</div>
+<div class="stat-box">
+    <h1>100000+</h1>
+    <p>Lives Impacted</p>
+</div>
+
+        <div class="stat-box">
+            <h1>2000+</h1>
+            <p>Volunteers Across India</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="section">
+
+    <h2>What People Say</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    "Helping Hands NGO changed my life through education support.
+                    I am now pursuing engineering and achieving my dreams."
+                </p>
+
+                <h3>- Riya Sharma</h3>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    "The healthcare camps organized by the NGO helped my
+                    family receive proper treatment and medical guidance."
+                </p>
+
+                <h3>- Rahul Patil</h3>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    "Through the digital literacy program, I learned
+                    computer skills and secured a better job opportunity."
+                </p>
+
+                <h3>- Sneha Kulkarni</h3>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    "The clean water initiative improved sanitation and
+                    health conditions in our village."
+                </p>
+
+                <h3>- Suresh Jadhav</h3>
+
+            </div>
+
+        </div>
+
+             <div class="card">
+
+            <div class="card-content">
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    "Tree plantation drives inspired our community to
+                    protect the environment and keep our village green."
+                </p>
+
+                <h3>- Tanu S</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- INITIATIVES -->
+
+<div class="section" id="programs">
+
+    <h2>Our Campaign Initiative</h2>
+    <div class="cards">
+
+        <div class="card">
+
+            <img src="{{ url_for('static', filename='images/edu1.jpeg') }}"alt="Education Program">
+
+            <div class="card-content">
+
+                <h3>Education Program</h3>
+
+                <p>
+                    Our Education Program is dedicated to empowering children and young learners through quality education and skill development.
+                </p>
+
+                <button>See Details</button>
+
+            </div>
+
+        </div>
+<div class="card">
+
+    <img src="{{ url_for('static', filename='images/digital1.jpeg') }}"alt="Digital Literacy Program">
+
+    <div class="card-content">
+
+        <h3>Digital Literacy Program</h3>
+
+       <p>
+    Empowering individuals with computer skills,
+    internet knowledge, and digital education
+    to enhance learning and employment opportunities.
+</p>
+
+        <button>See Details</button>
+
+    </div>
+
+</div>
+<div class="card">
+
+    <img src="{{ url_for('static', filename='images/water.jpeg') }}"alt="Clean Water Initiative">
+
+    <div class="card-content">
+
+        <h3>Clean Water Initiative</h3>
+
+<p>
+    Providing access to safe drinking water through
+    water purification projects, borewell installations,
+    and water conservation awareness programs.
+</p>
+
+        <button>See Details</button>
+
+    </div>
+
+</div>
+
+
+<div class="card">
+    <img src="{{ url_for('static', filename='images/women.jpeg') }}"alt="Women Empowerment">
+
+    <div class="card-content">
+        <h3>Women Empowerment</h3>
+
+        <p>
+            Providing skills training and financial support
+            to empower women and improve livelihoods.
+        </p>
+
+        <button>See Details</button>
+    </div>
+</div>
+
+<div class="card">
+
+    <img src="{{ url_for('static', filename='images/en.jpeg') }}"alt="Environment Protection">
+
+    <div class="card-content">
+
+        <h3>Environment Protection</h3>
+
+        <p>
+            Promoting tree plantation, clean surroundings,
+            waste management, and environmental awareness
+            for a greener and healthier future.
+        </p>
+
+        <button>See Details</button>
+
+    </div>
+
+</div>
+
+
+
+
+        <div class="card">
+
+            <img src="{{ url_for('static', filename='images/health.jpeg') }}"alt="Healthcare Support">
+
+            <div class="card-content">
+
+                <h3>Healthcare Support</h3>
+
+                <p>
+                    Our Health Support Program is committed to improving well-being of individuals & communities by promoting access to basic healthcare services & awareness.
+                </p>
+
+                <button>See Details</button>
+
+            </div>
+
+        </div>
+<div class="card">
+
+    <img src="{{ url_for('static', filename='images/disaster.jpeg') }}"alt="Disaster Relief Program">
+
+    <div class="card-content">
+
+        <h3>Disaster Relief Program</h3>
+
+        <p>
+            Providing emergency food, shelter,
+            and rehabilitation support to communities affected
+            by floods, earthquakes, cyclones, & other disasters.
+        </p>
+
+        <button>See Details</button>
+
+    </div>
+
+</div>
+
+        <div class="card">
+
+            <img src="{{ url_for('static', filename='images/community.jpeg') }}"alt="Community Development">
+
+
+            <div class="card-content">
+
+                <h3>Community Development</h3>
+
+                <p>
+                    Our Community Development Program works towards building stronger, self-reliant, and sustainable communities.
+                </p>
+
+                <button>See Details</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <div class="footer-container">
+
+        <!-- Contact Us -->
+        <div class="footer-box">
+
+            <h3>📞 Contact Us</h3>
+
+            <p>📍 Pune, Maharashtra, India</p>
+            <p>📞 +91 993199319931</p>
+            <p>📧 ngo@gmail.com</p>
+            <p>🌐 www.helpinghandsngo.org</p>
+            <p>🚑 Emergency Helpline: +91 9876543210</p>
+            <p>🏢 Helping Hands NGO Office</p>
+
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-box">
+
+            <h3>🔗 Quick Links</h3>
+
+            <a href="/">🏡 Home</a>
+            <a href="#about">👤 About</a>
+            <a href="#programs">📋 Projects</a>
+            <a href="#contact">☎️ Contact</a>
+
+        </div>
+
+        <!-- Location -->
+        <div class="footer-box" id="location">
+
+            <h3>📍 Location</h3>
+
+            <p>🏢 Helping Hands NGO Office</p>
+            <p>📍 FC Road, Shivajinagar</p>
+            <p>🏙️ Pune, Maharashtra - 411001</p>
+            <p>🚉 Nearest Station: Pune Junction</p>
+            <p>🚌 Bus Stop: Shivajinagar Bus Stand</p>
+            <p>🕒 Office Hours: 10:00 AM - 10:00 PM</p>
+            <p>Monday - Saturday</p>
+
+            <a href="https://maps.google.com"
+               target="_blank"
+               class="location-btn">
+
+               📌 View on Google Maps
+
+            </a>
+
+        </div>
+
+        <!-- Social Connect -->
+<div class="footer-box" id="social-connect">
+
+            <h3>🌐 Social Connect</h3>
+
+            <p>🌐 Facebook</p>
+            <p>📸 Instagram</p>
+            <p>🐦 Twitter</p>
+            <p>✈️ Telegram</p>
+            <p>💼 LinkedIn</p>
+            <p>💻 GitHub</p>
+            <p>▶️ YouTube</p>
+            <p>📧 Email Newsletter</p>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>

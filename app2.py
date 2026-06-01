@@ -5,12 +5,8 @@ import os
 app = Flask(__name__,
             template_folder="templates",
             static_folder="static")
+app.secret_key = "my_secret_key_123"
 
-@app.route("/test")
-def test():
-    return """
-    <img src='/static/images/edu1.jpeg' width='400'>
-    """
 # Create folders
 os.makedirs("static/images", exist_ok=True)
 os.makedirs("static/css", exist_ok=True)

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login 🔐</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="login-page">
+
+    <div class="container">
+
+      {% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="popup-message">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+        <h1 class="typing">🔐 Login</h1>
+<p> WELCOME TO NGO LOGIN </p>
+<form action="/login" method="POST">
+
+    <input
+        type="email"
+        name="email"
+        placeholder="📧 Enter Email"
+        required>
+
+    <input
+        type="password"
+        name="password"
+        placeholder="🔑 Enter Password"
+        required>
+<button
+    type="submit"
+    id="loginBtn"
+    class="login-btn">
+
+    🔐 LOGIN
+
+</button></form>        <button
+            type="button"
+            class="google-btn">
+
+            <img
+                src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
+                width="22">
+
+            Continue with Google
+
+        </button>
+
+        <a href="/register" class="register-btn">
+            📝 Create New Account
+        </a>
+<a href="/" class="home-btn">
+    🏠 Home
+</a>
+
+    </div>
+
+    <script>
+
+        function showPassword(){
+
+            var x = document.getElementById("password");
+
+            if(x.type === "password"){
+                x.type = "text";
+            }else{
+                x.type = "password";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

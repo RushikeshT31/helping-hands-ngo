@@ -31,6 +31,8 @@ def create_table():
 
     conn.commit()
     conn.close()
+
+create_table()
 # Home Page
 @app.route("/")
 def index():
@@ -38,8 +40,11 @@ def index():
     conn = connect_db()
     cur = conn.cursor()
 
+    try:
     cur.execute("SELECT * FROM slider")
     sliders = cur.fetchall()
+except:
+    sliders = []
 
     conn.close()
 

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate ❤️</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#e6f7ff;
+    text-align:center;
+    padding:50px;
+}
+
+.donate-box{
+    background:white;
+    max-width:700px;
+    margin:auto;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0px 5px 20px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#1877f2;
+}
+
+img{
+    width:280px;
+    border-radius:15px;
+}
+
+.donation-form input{
+    width:80%;
+    padding:15px;
+    margin:10px 0;
+    border:2px solid #1877f2;
+    border-radius:10px;
+    font-size:18px;
+}
+
+.pay-btn{
+    padding:15px 40px;
+    background:#00c853;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.pay-btn:hover{
+    background:#00b248;
+}
+
+.home-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 30px;
+    background:#1877f2;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+.success-box{
+    margin-top:20px;
+    padding:20px;
+    background:#e8fff0;
+    border:2px solid #00c853;
+    border-radius:15px;
+    display:none;
+}
+
+table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+table, th, td{
+    border:1px solid #ccc;
+}
+
+th{
+    background:#1877f2;
+    color:white;
+}
+
+th, td{
+    padding:12px;
+}
+
+.clear-btn{
+    margin-top:20px;
+    padding:12px 25px;
+    background:red;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.clear-btn:hover{
+    background:darkred;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="donate-box">
+
+    <h1>❤️ Support Our NGO</h1>
+
+    <p>Scan QR Code To Donate</p>
+
+            <img src="{{ url_for('static', filename='images/qr.jpeg') }}"alt="Scan">
+
+    <div class="donation-form">
+
+        <input type="text"
+        id="donorName"
+        placeholder="👤 Enter Your Name">
+
+        <br>
+
+        <input type="number"
+        id="amount"
+        placeholder="💰 Enter Amount">
+
+        <br>
+
+        <button class="pay-btn"
+        onclick="showDonation()">
+        💳 Pay Now
+        </button>
+
+    </div>
+
+    <div id="successBox"
+    class="success-box"></div>
+
+    <h3>Account Name: Helping Hand NGO</h3>
+
+    <h4>UPI ID: helpinghand@upi</h4>
+
+    <a href="/" class="home-btn">
+    🏠 Back To Home
+</a>
+
+</div>
+
+<h2>📋 Donation Records</h2>
+
+<table id="donationTable">
+
+<tr>
+    <th>Donor Name</th>
+    <th>Amount</th>
+</tr>
+
+</table>
+
+<button onclick="clearDonations()"
+class="clear-btn">
+🗑 Clear Records
+</button>
+
+<script>
+
+window.onload = function(){
+
+    let donors =
+    JSON.parse(localStorage.getItem("donors")) || [];
+
+    let table =
+    document.getElementById("donationTable");
+
+    donors.forEach(function(donor){
+
+        let row =
+        table.insertRow(-1);
+
+        row.insertCell(0).innerHTML =
+        donor.name;
+
+        row.insertCell(1).innerHTML =
+        "₹" + donor.amount;
+
+    });
+
+};
+
+function showDonation(){
+
+    let name =
+    document.getElementById("donorName").value;
+
+    let amount =
+    document.getElementById("amount").value;
+
+    if(name==="" || amount===""){
+        alert("Please Enter Name And Amount");
+        return;
+    }
+
+    document.getElementById("successBox").style.display="block";
+
+    document.getElementById("successBox").innerHTML =
+    "🎉 Thank You <b>" + name +
+    "</b><br><br>💰 Donation Amount: ₹" +
+    amount +
+    "<br><br>❤️ Your Support Helps Our NGO!";
+
+    let table =
+    document.getElementById("donationTable");
+
+    let row =
+    table.insertRow(-1);
+
+    row.insertCell(0).innerHTML = name;
+    row.insertCell(1).innerHTML = "₹" + amount;
+
+    let donors =
+    JSON.parse(localStorage.getItem("donors")) || [];
+
+    donors.push({
+        name:name,
+        amount:amount
+    });
+
+    localStorage.setItem(
+        "donors",
+        JSON.stringify(donors)
+    );
+
+    document.getElementById("donorName").value="";
+    document.getElementById("amount").value="";
+}
+
+function clearDonations(){
+
+    localStorage.removeItem("donors");
+
+    document.getElementById("donationTable").innerHTML =
+    "<tr><th>Donor Name</th><th>Amount</th></tr>";
+
+    alert("Donation Records Cleared");
+}
+
+</script>
+
+</body>
+</html>

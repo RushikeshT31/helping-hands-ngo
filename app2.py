@@ -1,5 +1,6 @@
+```python
 from flask import Flask, render_template, request, redirect, session, flash
-import sqlite3
+import psycopg2
 import os
 
 app = Flask(__name__,
@@ -12,41 +13,16 @@ app.secret_key = "my_secret_key_123"
 os.makedirs("static/images", exist_ok=True)
 os.makedirs("static/css", exist_ok=True)
 
-# Database Connection
+# PostgreSQL Connection
 def connect_db():
-
-    conn = psycopg2.connect(
-
+    return psycopg2.connect(
         host="dpg-d8f8pac2m8qs73e061og-a",
-
         database="ngo_db_p5gm",
-
         user="ngo_user",
-
-        password="3TgPqG9heJ8eax5lkGBKyzNsOS9xfGdW",
-
+        password="YOUR_PASSWORD",
         port="5432",
-
         sslmode="require"
     )
-
-    return conn
-
-
-# Create Slider Table
-def create_slider_table():
-    conn = connect_db()
-    cur = conn.cursor()
-
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS slider(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        image TEXT
-    )
-    """)
-
-    conn.commit()
-    conn.close()
 
 # Create Users Table
 def create_users_table():
@@ -55,36 +31,23 @@ def create_users_table():
 
     cur.execute("""
     CREATE TABLE IF NOT EXISTS users(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT,
-        email TEXT UNIQUE,
-        password TEXT
+        id SERIAL PRIMARY KEY,
+        username VARCHAR(100),
+        email VARCHAR(100) UNIQUE,
+        password VARCHAR(100)
     )
     """)
 
     conn.commit()
+    cur.close()
     conn.close()
 
-# Create tables when app starts
-create_slider_table()
 create_users_table()
 
 # Home Page
 @app.route("/")
 def index():
-
-    conn = connect_db()
-    cur = conn.cursor()
-
-    try:
-        cur.execute("SELECT * FROM slider")
-        sliders = cur.fetchall()
-    except:
-        sliders = []
-
-    conn.close()
-
-    return render_template("index.html", sliders=sliders)
+    return render_template("index.html")
 
 # About
 @app.route("/about")
@@ -116,15 +79,17 @@ def register():
 
         try:
             cur.execute(
-                "INSERT INTO users(username,email,password) VALUES(?,?,?)",
+                "INSERT INTO users(username,email,password) VALUES(%s,%s,%s)",
                 (username, email, password)
             )
+
             conn.commit()
             flash("Registration Successful!")
 
         except:
             flash("Email already exists!")
 
+        cur.close()
         conn.close()
 
         return redirect("/login")
@@ -144,16 +109,18 @@ def login():
         cur = conn.cursor()
 
         cur.execute(
-            "SELECT * FROM users WHERE email=? AND password=?",
+            "SELECT * FROM users WHERE email=%s AND password=%s",
             (email, password)
         )
 
         user = cur.fetchone()
 
+        cur.close()
         conn.close()
 
         if user:
             session["admin"] = email
+            flash("Login Successful!")
             return redirect("/dashboard")
 
         flash("Invalid Email or Password")
@@ -174,6 +141,7 @@ def dashboard():
     cur.execute("SELECT id, username, email FROM users")
     users = cur.fetchall()
 
+    cur.close()
     conn.close()
 
     return render_template(
@@ -182,7 +150,7 @@ def dashboard():
         email=session["admin"]
     )
 
-# Show Users
+# View Users
 @app.route("/users")
 def users():
 
@@ -192,6 +160,7 @@ def users():
     cur.execute("SELECT id, username, email FROM users")
     data = cur.fetchall()
 
+    cur.close()
     conn.close()
 
     return str(data)
@@ -206,7 +175,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
-
-# Run App
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+```

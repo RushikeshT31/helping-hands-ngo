@@ -146,7 +146,7 @@ def dashboard():
     return render_template(
         "dash.html",
         users=users,
-        email=session["admin"]
+        name=session["admin"]
     )
 
 # View Users

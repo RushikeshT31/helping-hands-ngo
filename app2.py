@@ -5,6 +5,7 @@ import os
 app = Flask(__name__,
             template_folder="templates",
             static_folder="static")
+
 app.secret_key = "my_secret_key_123"
 
 # Create folders
@@ -15,9 +16,9 @@ os.makedirs("static/css", exist_ok=True)
 def connect_db():
     return sqlite3.connect("slider.db")
 
-# Create Users Table
+# Create Slider Table
 def create_slider_table():
-    conn = sqlite3.connect("slider.db")
+    conn = connect_db()
     cur = conn.cursor()
 
     cur.execute("""
@@ -30,19 +31,26 @@ def create_slider_table():
     conn.commit()
     conn.close()
 
-@app.route("/users")
-def users():
-
+# Create Users Table
+def create_users_table():
     conn = connect_db()
     cur = conn.cursor()
 
-    cur.execute("SELECT id, username, email FROM users")
-    data = cur.fetchall()
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS users(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT,
+        email TEXT UNIQUE,
+        password TEXT
+    )
+    """)
 
+    conn.commit()
     conn.close()
 
-    return str(data)
-
+# Create tables when app starts
+create_slider_table()
+create_users_table()
 
 # Home Page
 @app.route("/")
@@ -61,21 +69,22 @@ def index():
 
     return render_template("index.html", sliders=sliders)
 
-# About Page
+# About
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-# Gallery Page
+# Gallery
 @app.route("/gallery")
 def gallery():
     return render_template("gallery.html")
 
+# Donate
 @app.route("/donate")
 def donate():
     return render_template("donate.html")
 
-# Register Page
+# Register
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
@@ -88,20 +97,24 @@ def register():
         conn = connect_db()
         cur = conn.cursor()
 
-        cur.execute(
-            "INSERT INTO users(username,email,password) VALUES(?,?,?)",
-            (username, email, password)
-        )
+        try:
+            cur.execute(
+                "INSERT INTO users(username,email,password) VALUES(?,?,?)",
+                (username, email, password)
+            )
+            conn.commit()
+            flash("Registration Successful!")
 
-        conn.commit()
+        except:
+            flash("Email already exists!")
+
         conn.close()
-
-        flash("✅ Registration Successful!")
 
         return redirect("/login")
 
     return render_template("register.html")
-# Login Page
+
+# Login
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
@@ -123,51 +136,48 @@ def login():
         conn.close()
 
         if user:
-
             session["admin"] = email
-
-            flash("✅ Login Successful!")
-
             return redirect("/dashboard")
 
-        else:
-
-            flash("❌ Invalid Email or Password!")
-
-            return redirect("/login")
+        flash("Invalid Email or Password")
+        return redirect("/login")
 
     return render_template("login.html")
 
-# Dashboard Page
+# Dashboard
 @app.route("/dashboard")
 def dashboard():
 
     if "admin" not in session:
         return redirect("/login")
 
+    conn = connect_db()
+    cur = conn.cursor()
+
+    cur.execute("SELECT id, username, email FROM users")
+    users = cur.fetchall()
+
+    conn.close()
+
     return render_template(
         "dash.html",
-        name=session["admin"]
+        users=users,
+        email=session["admin"]
     )
 
-# Delete Slider
-@app.route("/delete/<int:id>")
-def delete(id):
+# Show Users
+@app.route("/users")
+def users():
 
     conn = connect_db()
     cur = conn.cursor()
 
-    cur.execute(
-        "DELETE FROM slider WHERE id=?",
-        (id,)
-    )
+    cur.execute("SELECT id, username, email FROM users")
+    data = cur.fetchall()
 
-    conn.commit()
     conn.close()
 
-    flash("🗑️ Image Deleted Successfully!")
-
-    return redirect("/dashboard")
+    return str(data)
 
 # Logout
 @app.route("/logout")
@@ -175,10 +185,10 @@ def logout():
 
     session.pop("admin", None)
 
-    flash("✅ Logged Out Successfully!")
-
     return redirect("/login")
 
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
 
 # Run App
 if __name__ == "__main__":

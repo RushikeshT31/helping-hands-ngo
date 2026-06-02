@@ -1,4 +1,3 @@
-```python
 from flask import Flask, render_template, request, redirect, session, flash
 import psycopg2
 import os
@@ -175,4 +174,3 @@ def logout():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
-```

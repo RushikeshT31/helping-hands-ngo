@@ -29,6 +29,21 @@ def create_slider_table():
 
     conn.commit()
     conn.close()
+
+@app.route("/users")
+def users():
+
+    conn = connect_db()
+    cur = conn.cursor()
+
+    cur.execute("SELECT id, username, email FROM users")
+    data = cur.fetchall()
+
+    conn.close()
+
+    return str(data)
+
+
 # Home Page
 @app.route("/")
 def index():

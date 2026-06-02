@@ -19,7 +19,7 @@ def connect_db():
         host="dpg-d8f8pac2m8qs73e061og-a",
         database="ngo_db_p5gm",
         user="ngo_user",
-        password="YOUR_PASSWORD",
+        password="3TgPqG9heJ8eax5lkGBKyzNsOS9xfGdW",
         port="5432",
         sslmode="require"
     )

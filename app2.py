@@ -14,7 +14,24 @@ os.makedirs("static/css", exist_ok=True)
 
 # Database Connection
 def connect_db():
-    return sqlite3.connect("slider.db")
+
+    conn = psycopg2.connect(
+
+        host="dpg-d8f8pac2m8qs73e061og-a",
+
+        database="ngo_db_p5gm",
+
+        user="ngo_user",
+
+        password="3TgPqG9heJ8eax5lkGBKyzNsOS9xfGdW",
+
+        port="5432",
+
+        sslmode="require"
+    )
+
+    return conn
+
 
 # Create Slider Table
 def create_slider_table():

@@ -83,7 +83,7 @@ def register():
             )
 
             conn.commit()
-            flash("Registration Successful!")
+            flash("✅ Registration Successful!")
 
         except:
             flash("Email already exists!")
@@ -119,10 +119,10 @@ def login():
 
         if user:
             session["admin"] = email
-            flash("Login Successful!")
+            flash("✅ Login Successful!")
             return redirect("/dashboard")
 
-        flash("Invalid Email or Password")
+        flash("❌ Invalid Email or Password")
         return redirect("/login")
 
     return render_template("login.html")
@@ -170,7 +170,10 @@ def logout():
 
     session.pop("admin", None)
 
+    flash("✅ Logged Out Successfully!")
+
     return redirect("/login")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
